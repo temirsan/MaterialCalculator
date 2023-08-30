@@ -23,7 +23,7 @@ class ExpressionWriter {
             }
 
             CalculatorAction.Delete -> {
-                expression = expression.drop(1)
+                expression = expression.dropLast(1)
             }
 
             is CalculatorAction.Number -> {
@@ -69,7 +69,7 @@ class ExpressionWriter {
     }
 
     private fun prepareForCalculation(): String {
-        val newExpression = expression.takeLastWhile {
+        val newExpression = expression.dropLastWhile {
             it in "$operationSymbols(."
         }
         if (newExpression.isEmpty()) {
