@@ -1,6 +1,8 @@
 package com.tatam.materialcalculator.presentation
 
+import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -11,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 
 
+@OptIn(ExperimentalTestApi::class)
 class CalculatorScreenTest {
 
     @get:Rule
@@ -24,6 +27,7 @@ class CalculatorScreenTest {
 
     @Test
     fun enterExpression_correctResultDisplayed() {
+        composeRule.waitUntilAtLeastOneExists(hasText("1"))
         composeRule.onNodeWithText("1").performClick()
         composeRule.onNodeWithText("+").performClick()
         composeRule.onNodeWithText("2").performClick()
